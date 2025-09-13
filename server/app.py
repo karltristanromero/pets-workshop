@@ -86,5 +86,5 @@ def get_breeds() -> Response:
     
     return jsonify(breeds_list)
 
-if __name__ == '__main__':@
+if __name__ == '__main__':
     app.run(debug=True, port=5100) # Port 5100 to avoid macOS conflicts
