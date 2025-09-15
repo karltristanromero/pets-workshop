@@ -78,25 +78,25 @@
 .steampunk {
   --primary-bg: #2c1810;
   --secondary-bg: #3d2317;
-  --primary-text: #d4af37;
-  --secondary-text: #bf9b30;
-  --accent-color: #cd7f32;
-  --border-color: #8b4513;
+  --primary-text: #ffd700;    /* Brighter gold */
+  --secondary-text: #ffc87c;  /* Light copper */
+  --accent-color: #ffa500;    /* Bright orange */
+  --border-color: #cd7f32;    /* Bronze */
 
   background: 
-    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30,30 L45,45 M30,30 L15,45 M30,30 L45,15 M30,30 L15,15' stroke='%238b4513' stroke-width='0.5' fill='none'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30,30 L45,45 M30,30 L15,45 M30,30 L45,15 M30,30 L15,15' stroke='%23cd7f32' stroke-width='0.5' fill='none'/%3E%3C/svg%3E"),
     linear-gradient(45deg, #2c1810 0%, #3d2317 100%);
   font-family: "Copperplate", "Copperplate Gothic Light", fantasy;
 }
 
 /* Fantasy Realm theme */
 .fantasy {
-  --primary-bg: #2a0845;
-  --secondary-bg: #3c1053;
-  --primary-text: #e9d5ff;
-  --secondary-text: #d8b4fe;
-  --accent-color: #a855f7;
-  --border-color: #9333ea;
+  --primary-bg: #1a0536;      /* Darker purple background */
+  --secondary-bg: #2d0b4c;    /* Slightly lighter purple background */
+  --primary-text: #ffd700;    /* Bright gold */
+  --secondary-text: #ff9ecd;  /* Bright pink */
+  --accent-color: #00ffff;    /* Cyan */
+  --border-color: #ff69b4;    /* Hot pink */
 
   background: 
     url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40,40 m-30,0 a30,30 0 1,0 60,0 a30,30 0 1,0 -60,0' stroke='%236b21a8' stroke-width='0.5' fill='none'/%3E%3C/svg%3E"),
@@ -114,8 +114,33 @@ body {
   background-color: var(--secondary-bg);
 }
 
-[class*="text-slate"] {
-  color: var(--primary-text);
+.text-slate-100, .text-slate-300, [class*="text-slate"] {
+  color: var(--primary-text) !important;
+}
+
+/* Theme-specific text overrides */
+.steampunk .text-slate-100 {
+  color: #ffd700 !important; /* Bright gold */
+}
+.steampunk .text-slate-300 {
+  color: #ffc87c !important; /* Light copper */
+}
+
+.fantasy .text-slate-100,
+.fantasy h1,
+.fantasy h2,
+.fantasy h3 {
+  color: #ffd700 !important; /* Bright gold */
+}
+
+.fantasy .text-slate-300,
+.fantasy p {
+  color: #ff9ecd !important; /* Bright pink */
+}
+
+/* Additional Fantasy theme text enhancements */
+.fantasy * {
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.3); /* Subtle gold glow */
 }
 
 .btn, button:not([class*="bg-"]) {
