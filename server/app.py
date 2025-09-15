@@ -1,6 +1,6 @@
 import os
 from typing import Dict, List, Any, Optional
-from flask import Flask, jsonify, Response
+from flask import Flask, jsonify, Response, request
 from models import init_db, db, Dog, Breed
 
 # Get the server directory path
@@ -18,17 +18,27 @@ def get_dogs() -> Response:
     query = db.session.query(
         Dog.id, 
         Dog.name, 
-        Breed.name.label('breed')
+        Breed.name.label('breed'),
+        Dog.status
     ).join(Breed, Dog.breed_id == Breed.id)
+    
+    # Apply filters
+    breed = request.args.get('breed')
+    available_only = request.args.get('available') == 'true'
+    
+    if breed:
+        query = query.filter(Breed.name == breed)
+    if available_only:
+        query = query.filter(Dog.status == 'available')
     
     dogs_query = query.all()
     
-    # Convert the result to a list of dictionaries
     dogs_list: List[Dict[str, Any]] = [
         {
             'id': dog.id,
             'name': dog.name,
-            'breed': dog.breed
+            'breed': dog.breed,
+            'status': dog.status.name if dog.status else None
         }
         for dog in dogs_query
     ]
