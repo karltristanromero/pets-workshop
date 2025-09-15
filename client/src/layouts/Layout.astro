@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro"
+import ThemeSelector from "../components/ThemeSelector.svelte"
 import "../styles/global.css"
 
 interface Props {
@@ -17,6 +18,8 @@ const { title = "Tailspin Shelter" } = Astro.props;
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
+        <!-- Theme fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
         <!-- Preconnect to improve font loading -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,6 +32,7 @@ const { title = "Tailspin Shelter" } = Astro.props;
                 <slot />
             </div>
         </main>
+        <ThemeSelector client:load />
     </body>
 </html>
 
